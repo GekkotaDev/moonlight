@@ -45,13 +45,12 @@ export default sidebar(
       link: "/faq/",
       icon: "question",
     },
-    page`faq`,
     autogenerate.from`faq`,
   ),
   topic(
     {
       label: "Index",
-      link: "/index/",
+      link: "/index-list/",
       icon: "list-format",
     },
     page`index-list`,

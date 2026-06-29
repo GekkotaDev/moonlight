@@ -1,0 +1,54 @@
+name: Deploy Site
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-pdf-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - uses: pnpm/action-setup@v6
+        with:
+          cache: true
+          version: 11
+
+      - name: Install Chromium
+        run: sudo apt-get install -y chromium-browser
+
+      - name: Install, build and run
+        run: |
+          pnpm install
+          pnpm run build
+          pnpm run preview &
+          echo $!
+
+      - name: Wait for server startup
+        run: sleep 5
+        shell: bash
+
+        # Process ID will be used later to shut down the server
+      - name: Record preview server's process ID
+        run: lsof -ti:4321 > preview.pid
+
+        # Change the port in the URL if you've configured the server to a different port.
+        # `/usr/bin/chromium-browser` is a default path for Chromium executable on Ubuntu.
+        # The resulting PDF will be available at https://target.website/_pdf/docs.pdf
+      - name: Create PDF
+        run:
+          pnpm dlx starlight-to-pdf http://localhost:4321 --browser-executable
+          /usr/bin/chromium-browser -p ./dist/_pdf --filename docs --pdf-outline
+
+      - name: Stop preview server
+        run: |
+          kill $(cat preview.pid)
+          rm preview.pid

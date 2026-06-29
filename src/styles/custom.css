@@ -1,0 +1,12 @@
+:root {
+  --sl-font: 'Atkinson Hyperlegible Next', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+}
+
+/* code,
+code * {
+  font-family: 'Fira Code', monospace;
+} */

@@ -1,0 +1,16 @@
+---
+import Default from '@astrojs/starlight/components/MarkdownContent.astro';
+
+import { filter } from "../utils/profanities"
+
+// Because filtering slows down hot reload, we only do that when releasing to
+// production else it would be painfully slow.
+const profane = await Astro.slots.render("default");
+const html = (typeof window === "undefined" || "Deno" in window) 
+    ? profane
+    : filter.clean(profane);
+---
+
+<Default >
+    <Fragment set:html={html} />
+</Default>

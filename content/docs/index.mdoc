@@ -1,0 +1,62 @@
+---
+title: "&lt;app&gt; Manual" 
+description: Search engine description.
+template: splash # Remove or comment out this line to display the site sidebar on this page.
+hero:
+  tagline: Tagline!
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: Get Started
+      link: /tutorials
+      icon: right-arrow
+#    - text: Read the Starlight docs
+#      link: https://starlight.astro.build
+#      icon: external
+#      variant: minimal
+---
+
+{% card title="Call to Action" icon="rocket" %}
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+{% /card %}
+
+## Sections
+
+{% cardgrid %}
+  {% linkcard 
+    title="Tutorial"
+    href="/tutorials"
+    description="Learn with official and community made tutorials."
+  /%}
+
+  {% linkcard 
+    title="Guides"
+    href="/guides"
+    description="Discover █'s features and get help with transitioning from other applications."
+  /%}
+  
+  {% linkcard 
+    title="Reference"
+    href="/reference"
+    description="Additional material to reference during usage."
+  /%}
+  
+  {% linkcard 
+    title="Blog"
+    href="/blog"
+    description="Updates and announcements from the developers."
+  /%}
+
+  {% linkcard 
+    title="FAQ"
+    href="/faq"
+    description="Frequently Asked Questions (and Answers)."
+  /%}
+
+  {% linkcard
+    title="Index"
+    href="/index-list" 
+    description="List of items present within the manual."
+  /%}
+  
+{% /cardgrid %}

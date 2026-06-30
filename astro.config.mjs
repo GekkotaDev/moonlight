@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 // import { unified } from "@astrojs/markdown-remark";
+import markdoc from "@astrojs/markdoc";
 import { satteri } from "@astrojs/markdown-satteri";
 import solidJs from "@astrojs/solid-js";
 import AstroPWA from "@vite-pwa/astro";
@@ -23,7 +24,6 @@ import starlightScrollToTop from "starlight-scroll-to-top";
 import starlightSidebarSwipe from "starlight-sidebar-swipe";
 import starlightSiteGraph from "starlight-site-graph";
 import starlightThemeRapide from "starlight-theme-rapide";
-import markdoc from "@astrojs/markdoc";
 import starlightVideos from "starlight-videos";
 
 import blogConfig from "./src/blog.config.ts";

@@ -1,3 +1,5 @@
+import { defineEcConfig } from "@astrojs/starlight/expressive-code"
+
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 // import { pluginCodeCaption } from "@fujocoded/expressive-code-caption";
@@ -6,7 +8,7 @@ import { pluginTypewriter } from "expressive-code-typewriter";
 
 import { expressiveCodeD2Plugin } from "./plugins/ec/d2";
 
-export default {
+export default defineEcConfig({
   themes: ["gruvbox-dark-soft", "gruvbox-light-hard"],
   plugins: [
     // pluginCodeCaption(),
@@ -16,9 +18,6 @@ export default {
     pluginCollapsibleSections(),
     expressiveCodeD2Plugin(),
   ],
-  shiki: {
-    langs: ["d2"],
-  },
   defaultProps: {
     // Change the default style of collapsible sections
     collapseStyle: "collapsible-auto",
@@ -26,4 +25,4 @@ export default {
     // Show line numbers by default
     showLineNumbers: true,
   },
-};
+});
